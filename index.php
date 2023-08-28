@@ -1,64 +1,109 @@
+<?php
  
- <?php
-"question1 what is output";
-"1- error call to undefined function" ;
-"2-null";
-"3-true";
+ class Product{
 
-"question2 write code";
-"1";
-echo "fibonacci series";
-echo "<br>";
-"2";
-$year = 2023;
-if ($year % 400 == 0) {
-   echo $year." is a leap year.";
-} elseif ($year % 100 == 0) {
-   echo $year." is not a leap year.";
-} elseif ($year % 4 == 0) {
-   echo $year." is a leap year.";
-} else {
-   echo $year." is not a leap year.";
+public $id;
+public $name;
+public static $price;
+public static $total=0;
+public static function total_price($price){
+    Product::$price=$price;
+Product::$total+=$price;   
+return (Product::$total);
 }
-echo "<br>";
 
-"3";
-
-$n=range(11,20);
-shuffle($n);
-for ($x=0; $x< 10; $x++)
-{
-echo $n[$x].' ';
 }
-echo "\n";
+
+ 
+
+ 
+ $ll= new Product ();
+Product::total_price(5);
+var_dump($ll);
 
 
-echo "<br>";
-"4";
-for ($i = 1; $i < 6; $i++) {
-    for ($j = 1; $j < 6; $j++) {
-       if ($j == 1) {
-         echo str_pad($i*$j, 3, " ", STR_PAD_LEFT);
-       } else {
-         echo str_pad($i*$j, 3, " ", STR_PAD_LEFT);
-       }
+ //,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+ function is_anagram($a, $b)
+ {
+       if (count_chars($a, 1) == count_chars($b, 1))
+    {
+        return "This two strings are anagram";
     }
-    echo "<br>";
-  }
-  echo "<br>";
-  "5";
-  function remove_duplicates_list($list1) {
-    $nums_unique = array_values(array_unique($list1));
-    return $nums_unique ;
-  }
-  $nums = array(7,7,2,2,3,4,5,5);
-  print_r(remove_duplicates_list($nums));
+    else
+    {
+        return "This two strings are not anagram";
+    }
+ }
+print_r(is_anagram('anagram','nagaram')."\n");
+print_r(is_anagram('cat','rat')."\n");
+//,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
-  echo "<br>";
 
-  "question1 true or false";
-  "1-false";
-  "2-true";
-  "3-false";
-  "4-true";
-  "5-true";
+
+function Palindrome($MyString) {
+    $l = 0;
+    $r = strlen($MyString) - 1;
+    $flag = 0;
+  
+    while($r > $l){
+      if ($MyString[$l] != $MyString[$r]){
+        $flag = 1;
+        break;
+      }
+      $l++;
+      $r--;
+    }
+  
+    if ($flag == 0){
+      echo $MyString." is a Palindrome string.\n";
+    } else {
+      echo $MyString." is not a Palindrome string.\n";
+    }
+  }
+  
+  Palindrome("radar");
+  Palindrome("rubber");
+  Palindrome("malayalam");
+  //,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+  //PHP supports multiple inheritances only by using interfaces or Traits 
+
+  trait Geeks {
+    public function sayhello() {
+       echo "Hello";
+     }
+   }
+    
+  // trait forGeeks
+  trait forGeeks {
+    public function sayfor() {
+       echo " Geeks";
+     }
+   }
+    
+  class Sample {
+    use Geeks;
+    use forGeeks;
+    public function geeksforgeeks() {
+        echo "\nGeeksforGeeks";
+     } 
+  }
+    
+  $test = new Sample();
+  $test->sayhello();
+  $test->sayfor();
+  $test->geeksforgeeks();
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
